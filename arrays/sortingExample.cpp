@@ -1,8 +1,4 @@
-#include "../helpers.hpp"
-
-#include "bubble.hpp"
-#include "insertion.hpp"
-#include "selection.hpp"
+#include "sortings.hpp"
 
 int main() {
     
