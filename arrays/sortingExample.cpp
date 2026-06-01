@@ -1,4 +1,4 @@
-#include "sortings.hpp"
+#include "arrays/sorting/sortings.hpp"
 
 int main() {
     

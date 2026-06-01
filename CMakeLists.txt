@@ -16,6 +16,10 @@ target_sources(ArraysBase
         FILES
             "arrays/base/helpers.hpp"
 )
+target_include_directories(ArraysBase
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}
+)
 
 
 # Arrays Sorting Library
@@ -27,7 +31,7 @@ target_sources(ArraysSorting
         "arrays/sorting/selection.cpp"
 
     PUBLIC
-        FILE_SET arraysHeaders
+        FILE_SET arraysSortingHeaders
         TYPE HEADERS
         BASE_DIRS
             "arrays/sorting/"
@@ -38,20 +42,45 @@ target_link_libraries(ArraysSorting
     PUBLIC
         ArraysBase
 )
-target_include_directories(ArraysSorting
-    PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}
-)
 
-
-# Arrays Example Executable
+# Arrays Sorting Example Executable
 add_executable(ArraysSortingExample)
 target_link_libraries(ArraysSortingExample
     PRIVATE
         ArraysSorting
 )
-
 target_sources(ArraysSortingExample
     PRIVATE
         arrays/sortingExample.cpp
+)
+
+
+# Arrays Searching Library
+add_library(ArraysSearching)
+target_sources(ArraysSearching
+    PRIVATE
+        "arrays/searching/linear.cpp"
+        "arrays/searching/binary.cpp"
+    PUBLIC
+        FILE_SET arraysSearchingHeaders
+        TYPE HEADERS
+        BASE_DIRS
+            "arrays/searching/"
+        FILES
+            "arrays/searching/searching.hpp"
+)
+target_link_libraries(ArraysSearching
+    PUBLIC
+        ArraysBase
+)
+
+# Arrays Searching Example Executable
+add_executable(ArraysSearchingExample)
+target_link_libraries(ArraysSearchingExample
+    PRIVATE
+        ArraysSearching
+)
+target_sources(ArraysSearchingExample
+    PRIVATE
+        arrays/searchingExample.cpp
 )
